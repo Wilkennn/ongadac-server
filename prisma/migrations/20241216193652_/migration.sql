@@ -101,6 +101,7 @@ CREATE TABLE `usuario_tarefa` (
     `usuarioId` INTEGER NOT NULL,
     `tarefaId` INTEGER NOT NULL,
 
+    INDEX `Usuario_Tarefa_tarefaId_fkey`(`tarefaId`),
     PRIMARY KEY (`usuarioId`, `tarefaId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -150,10 +151,10 @@ CREATE TABLE `_PetTotarefa` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `Adocao` ADD CONSTRAINT `Adocao_usuarioId_fkey` FOREIGN KEY (`usuarioId`) REFERENCES `usuario`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Adocao` ADD CONSTRAINT `Adocao_petId_fkey` FOREIGN KEY (`petId`) REFERENCES `Pet`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Adocao` ADD CONSTRAINT `Adocao_petId_fkey` FOREIGN KEY (`petId`) REFERENCES `Pet`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Adocao` ADD CONSTRAINT `Adocao_usuarioId_fkey` FOREIGN KEY (`usuarioId`) REFERENCES `usuario`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `endereco` ADD CONSTRAINT `Endereco_usuarioId_fkey` FOREIGN KEY (`usuarioId`) REFERENCES `usuario`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;

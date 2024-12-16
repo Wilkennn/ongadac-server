@@ -11,8 +11,6 @@ export class AuthController {
                 return res.status(400).json({ message: 'Usuário ou senha inválidos' });
             }
 
-            req.session.user = usuario;
-
             return res.status(200).json({
                 message: 'Login realizado com sucesso!',
                 user: {
@@ -23,6 +21,7 @@ export class AuthController {
                 },
                 token
             });
+            
         } catch (error) {
             console.error('Erro ao realizar login:', error.message || error);
             return res.status(500).json({ message: 'Erro ao realizar login. Tente novamente mais tarde.' });
